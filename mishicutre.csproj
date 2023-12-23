@@ -13,5 +13,7 @@
     <PackageReference Include="GtkSharp" Version="3.24.24.*"/>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1"/>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
+    <PackageReference Include="RestSharp" Version="109.0.0-preview.1"/>
   </ItemGroup>
 </Project>

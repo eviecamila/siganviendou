@@ -6,10 +6,18 @@ namespace mishicutre
 {   
     public class Program
     {
+
+        //DATOS DE USUSARIO
+        public static int _id;
+        public static string _user;
+
+        
         public static Window w_menu = new menu();
         // public static Window w_sudoku = new sudoku(), w_tictactoe = new tictactoe.tictactoe_gui(), w_pairs = new pares_y_nones.pares_nones_gui(), w_rps = new rps.rps_gui(), w_menu = new menu(), 
         public static Window w_login = new login();
         public static Application app = new Application("org.mishicutre.mishicutre", GLib.ApplicationFlags.None);
+
+
         [STAThread]
         public static void Main(string[] args)
         {
@@ -25,6 +33,7 @@ namespace mishicutre
             // app.AddWindow(w_login);
             // w_rps.Hide();
             w_login.Show();
+            w_login.Title = "login";
             Application.Run();
         }
     }

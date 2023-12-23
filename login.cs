@@ -1,6 +1,8 @@
 using System;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
+using Newtonsoft.Json;
+
 using mishicutre;
 using System.Threading;
 using funciones;
@@ -31,20 +33,33 @@ namespace mishicutre
         [STAThread]
         private void log()
         {
-            if (sql.buscar_where_x_e_y("users", TB_USR.Text, "name", "pass") == TB_PASS.Text)
-            {
-                // Thread t_menu = new Thread(raaan);
-                // t_menu.Start();
-                raaan();
-                this.Hide();
-            }
+            string datos = con.rest.consumir("http://127.0.0.1:3000/login&u="+ TB_USR.Text +"&p=" + TB_PASS.Text);
+            string escorrecto = con.rest.socket();
+            dynamic data = JsonConvert.DeserializeObject(datos);
+            if (escorrecto[0] == '1') raaan(data);
+            // if (conexion.buscar_where_x_e_y("users", TB_USR.Text, "name", "pass") == TB_PASS.Text)
+            // {
+            //     // Thread t_menu = new Thread(raaan);
+            //     // t_menu.Start();
+            //     raaan();
+            //     this.Destroy();
+            // }
+            else f.cajita("Verifique sus datos, escroto = " + escorrecto, this);
         }
-        private void raaan()
+        private void raaan(dynamic data)
         {
+            //servicios web
+            
+            
+            //web service
+
+            string _id = data.id;
+            string _user = data.user;
+            user a = user._i(_id, _user);
             Program.app.AddWindow(Program.w_menu);
             Program.w_menu.Show();
-
-            // run.w_menu = run.menu();
+            this.Hide();
+            
         }
         
     }
